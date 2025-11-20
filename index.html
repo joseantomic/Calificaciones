@@ -125,7 +125,7 @@
     <div class="container">
         <div class="header-banner">
             <h1 class="institute-name">Instituto de Educación Superior Ateneo de Lengua y Cultura Guaraní</h1>
-            <h2 class="module-name">Módulo: REDACCIÓN Y CONVERSACIÓN - USO DE NUEVAS HERRAMIENTAS TECNOLÓGICAS </h2>
+            <h2 class="module-name">Módulo: LENGUA GUARANI II - MORFOLOGÍA </h2>
         </div>
 
         <div class="content-body"> <p class="instruction">Ingrese su número de cédula:</p>
@@ -155,52 +155,52 @@
         </div>
     </div>
 
-    <script>
-        // Tus datos de alumnos
-        const alumnos = [
-            { cedula: "6084909", nombre: "Carmen Sanchez Torres", calificacion: 5 },
-            { cedula: "5520278", nombre: "Ana Ramirez", calificacion: 5 },
-            { cedula: "7785320", nombre: "Augusto Torres Yahari", calificacion: 4 },
-            { cedula: "5951560", nombre: "Eliseo Sánchez", calificacion: 4 },
-	        { cedula: "5698585", nombre: "Ricardo Gabriel Gonzalez Garay", calificacion: 5 },
-	        { cedula: "6243839", nombre: "Francisca Beatriz Mereles Medina", calificacion: 5 },
-	        { cedula: "5278309", nombre: "Matto Gonzalez, Maria Minerva Carolinas", calificacion: 4 },
-	        { cedula: "6787456", nombre: "Mercado Franco, Geremias Arnaldo", calificacion: "Sin Calificación" },
-	        { cedula: "7609412", nombre: "Rojas Vazquez, Luz Diana", calificacion: 4 }
-        ];
+  <script>
+    // Tus datos de alumnos
+    const alumnos = [
+        { cedula: "7980482", nombre: "Espinoza Barrios, Lino César", calificacion: 5 },
+        { cedula: "5811758", nombre: "Benitez Fretes, Palmira Verónica", calificacion: "Sin Calificación" },
+        { cedula: "7326752", nombre: "Fariña Ojeda, Brahian Alexis", calificacion: 5 },
+        { cedula: "5401809", nombre: "Galeano Borjas, Aracely Dahiana", calificacion: "Sin Calificación" },
+        { cedula: "7085596", nombre: "Gonzalez Franco, Lujan", calificacion: 5 },
+        { cedula: "5426739", nombre: "Martinez Alonso, Mauricio Alexis", calificacion: 4 },
+        { cedula: "5278309", nombre: "Matto Gonzalez, Maria Minerva Carolinas", calificacion: 5 },
+        { cedula: "6787456", nombre: "Mercado Franco, Geremias Arnaldo", calificacion: "Sin Calificación" },
+        { cedula: "7609412", nombre: "Rojas Vazquez, Luz Diana", calificacion: 4 }
+    ];
 
-        function buscarNota() {
-            const cedulaBusqueda = document.getElementById("cedulaInput").value.trim();
-            const resultadoDiv = document.getElementById("resultado");
-            const tablaNotasBody = document.getElementById("tablaNotas");
-            const mensajeError = document.getElementById("mensajeError");
+    function buscarNota() {
+        const cedulaBusqueda = document.getElementById("cedulaInput").value.trim();
+        const resultadoDiv = document.getElementById("resultado");
+        const tablaNotasBody = document.getElementById("tablaNotas");
+        const mensajeError = document.getElementById("mensajeError");
 
-            tablaNotasBody.innerHTML = '';
-            resultadoDiv.classList.add('hidden');
-            mensajeError.classList.add('hidden');
+        tablaNotasBody.innerHTML = '';
+        resultadoDiv.classList.add('hidden');
+        mensajeError.classList.add('hidden');
 
-            const alumnoEncontrado = alumnos.find(alumno => alumno.cedula === cedulaBusqueda);
+        const alumnoEncontrado = alumnos.find(alumno => alumno.cedula === cedulaBusqueda);
 
-            if (alumnoEncontrado) {
-                const fila = document.createElement('tr');
-                fila.innerHTML = `
-                    <td>${alumnoEncontrado.cedula}</td>
-                    <td>${alumnoEncontrado.nombre}</td>
-                    <td>${alumnoEncontrado.calificacion}</td>
-                `;
-                tablaNotasBody.appendChild(fila);
-                resultadoDiv.classList.remove('hidden');
-            } else {
-                mensajeError.classList.remove('hidden');
-            }
+        if (alumnoEncontrado) {
+            const fila = document.createElement('tr');
+            fila.innerHTML = `
+                <td>${alumnoEncontrado.cedula}</td>
+                <td>${alumnoEncontrado.nombre}</td>
+                <td>${alumnoEncontrado.calificacion}</td>
+            `;
+            tablaNotasBody.appendChild(fila);
+            resultadoDiv.classList.remove('hidden');
+        } else {
+            mensajeError.classList.remove('hidden');
         }
+    }
 
-        function limpiarCampos() {
-            document.getElementById("cedulaInput").value = '';
-            document.getElementById("resultado").classList.add('hidden');
-            document.getElementById("mensajeError").classList.add('hidden');
-            document.getElementById("cedulaInput").focus();
-        }
-    </script>
+    function limpiarCampos() {
+        document.getElementById("cedulaInput").value = '';
+        document.getElementById("resultado").classList.add('hidden');
+        document.getElementById("mensajeError").classList.add('hidden');
+        document.getElementById("cedulaInput").focus();
+    }
+</script>
 </body>
 </html>
