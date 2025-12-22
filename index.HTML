@@ -3,133 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notas - Instituto Superior Ateneo de Lengua y Cultura Guaraní</title>
+    <title>Consulta de Notas - IES Ateneo</title>
     <style>
+        /* Fondo general */
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
+            margin: 0;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
             color: #333;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 0; /* Ahora el padding del container se lo dará el header-banner y el contenido */
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden; /* Para manejar los márgenes negativos del header-banner */
-        }
-        /* Estilos del banner del encabezado con colores institucionales (Amarillo y Negro) */
-        .header-banner {
-            background-color: #FFD700; /* Amarillo Oro - Puedes ajustar este color */
-            color: #000000; /* Texto negro por defecto para el banner */
-            padding: 25px 20px; /* Espacio interno superior/inferior y a los lados */
-            text-align: center;
-            border-radius: 8px 8px 0 0; /* Bordes redondeados solo arriba */
-            margin: 0; /* Asegura que no haya margen externo */
-            /* El margen negativo comentado es una técnica, pero a veces es más limpio con padding en el contenido */
-            /* margin: -30px -30px 25px -30px; /* Extiende el banner a los bordes del container */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para destacar */
-        }
-        .header-banner .institute-name {
-            font-size: 1.8em;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #000000; /* Asegura que el texto del instituto sea negro */
-            /* Text-shadow opcional para darle un poco de profundidad al texto */
-            /* text-shadow: 1px 1px 2px rgba(0,0,0,0.3); */
-        }
-        .header-banner .module-name {
-            font-size: 1.4em;
-            color: #333333; /* Un gris oscuro para el módulo, o #000000 para negro puro */
-            margin-top: 0;
-            font-style: italic; /* Hace el texto del módulo en cursiva, opcional */
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 30px 10px;
         }
 
-        /* Nuevo contenedor para el contenido debajo del banner, con padding */
+        /* Tarjeta principal */
+        .container {
+            width: 100%;
+            max-width: 720px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+        }
+
+        /* Banner superior institucional */
+        .header-banner {
+            background: linear-gradient(90deg, #ffd500, #ffeb7a);
+            color: #000;
+            padding: 20px 25px;
+            text-align: center;
+            border-bottom: 3px solid #000;
+        }
+
+        .header-banner .institute-name {
+            font-size: 1.4rem;
+            margin: 0 0 6px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .header-banner .module-name {
+            font-size: 1.1rem;
+            margin: 0;
+            font-style: italic;
+        }
+
+        /* Zona de contenido */
         .content-body {
-            padding: 30px; /* Padding interno para el resto del contenido del container */
+            padding: 24px 24px 26px;
         }
 
         .instruction {
             text-align: center;
-            margin-bottom: 15px;
-            font-size: 1.1em;
-            color: #666;
+            margin-bottom: 5px;
+            font-size: 1.05rem;
             font-weight: bold;
+            color: #444;
         }
+
+        .instruction-help {
+            text-align: center;
+            margin-bottom: 18px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* Grupo del campo */
+        .field-group {
+            margin-bottom: 18px;
+        }
+
+        .field-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
         input[type="text"] {
-            width: calc(100% - 22px);
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
             font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+        }
+
+        /* Botones */
         .button-group {
             display: flex;
             gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
+
         .button-group button {
-            width: 50%;
+            flex: 1;
         }
+
         button {
             background-color: #007bff;
-            color: white;
+            color: #ffffff;
             padding: 10px 15px;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 15px;
+            font-weight: 600;
+            transition: background-color 0.2s ease, transform 0.05s ease;
         }
+
         button:hover {
             background-color: #0056b3;
         }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
         .clear-button {
             background-color: #6c757d;
         }
+
         .clear-button:hover {
             background-color: #5a6268;
         }
+
         .hidden {
             display: none;
         }
+
+        /* Bloque de resultado */
+        #resultado {
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid #28a745;
+            padding: 14px 14px 18px;
+            background-color: #f6fff8;
+        }
+
+        #resultado h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #218838;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 8px;
         }
+
         th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
+            border: 1px solid #dee2e6;
+            padding: 10px;
             text-align: left;
+            font-size: 0.95rem;
         }
+
         th {
-            background-color: #e2e2e2;
+            background-color: #f1f3f5;
             color: #555;
         }
+
         td {
-            background-color: #f9f9f9;
+            background-color: #ffffff;
         }
+
+        /* Mensaje de error */
         #mensajeError {
-            color: red;
+            margin-top: 12px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            background-color: #ffe3e3;
+            color: #b00020;
+            border: 1px solid #ffb3b3;
+            font-weight: 600;
             text-align: center;
-            margin-top: 15px;
-            font-weight: bold;
+        }
+
+        /* Pie de página pequeño opcional */
+        .footer-note {
+            margin-top: 16px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        @media (max-width: 480px) {
+            .content-body {
+                padding: 18px 16px 20px;
+            }
+            .header-banner .institute-name {
+                font-size: 1.1rem;
+            }
+            .header-banner .module-name {
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Banner institucional -->
         <div class="header-banner">
             <h1 class="institute-name">Instituto de Educación Superior Ateneo de Lengua y Cultura Guaraní</h1>
-            <h2 class="module-name">Módulo: LENGUA GUARANI II - MORFOLOGÍA </h2>
+            <h2 class="module-name">MÓDULO: BIOESTADÍSTICA</h2>
         </div>
 
-        <div class="content-body"> <p class="instruction">Ingrese su número de cédula:</p>
-            <input type="text" id="cedulaInput" placeholder="Número de cédula">
+        <!-- Contenido principal -->
+        <div class="content-body">
+            <p class="instruction">Consulta de calificación por número de cédula</p>
+            <p class="instruction-help">Ingrese su número de cédula sin puntos. Ejemplo: <strong>5579579</strong></p>
+
+            <div class="field-group">
+                <label for="cedulaInput">Número de cédula</label>
+                <input type="text" id="cedulaInput" placeholder="Escriba aquí su número de cédula">
+            </div>
             
             <div class="button-group">
                 <button onclick="buscarNota()">Buscar</button>
@@ -137,70 +237,98 @@
             </div>
 
             <div id="resultado" class="hidden">
-                <h2>Tu Calificación:</h2>
+                <h2>Resultado de la búsqueda</h2>
                 <table>
                     <thead>
                         <tr>
                             <th>Cédula</th>
-                            <th>Nombre</th>
+                            <th>Apellidos y nombres</th>
                             <th>Calificación</th>
                         </tr>
                     </thead>
                     <tbody id="tablaNotas">
-                        </tbody>
+                        <!-- Se llena dinámicamente -->
+                    </tbody>
                 </table>
             </div>
 
-            <p id="mensajeError" class="hidden">Cédula no encontrada. Por favor, verifica tu número.</p>
+            <p id="mensajeError" class="hidden">
+                Cédula no encontrada. Por favor, verifique el número ingresado.
+            </p>
+
+            <div class="footer-note">
+                Sistema de consulta de notas – IES Ateneo de Lengua y Cultura Guaraní
+            </div>
         </div>
     </div>
 
-  <script>
-    // Tus datos de alumnos
-    const alumnos = [
-        { cedula: "7980482", nombre: "Espinoza Barrios, Lino César", calificacion: 5 },
-        { cedula: "5811758", nombre: "Benitez Fretes, Palmira Verónica", calificacion: "Sin Calificación" },
-        { cedula: "7326752", nombre: "Fariña Ojeda, Brahian Alexis", calificacion: 5 },
-        { cedula: "5401809", nombre: "Galeano Borjas, Aracely Dahiana", calificacion: "Sin Calificación" },
-        { cedula: "7085596", nombre: "Gonzalez Franco, Lujan", calificacion: 5 },
-        { cedula: "5426739", nombre: "Martinez Alonso, Mauricio Alexis", calificacion: 4 },
-        { cedula: "5278309", nombre: "Matto Gonzalez, Maria Minerva Carolinas", calificacion: 5 },
-        { cedula: "6787456", nombre: "Mercado Franco, Geremias Arnaldo", calificacion: "Sin Calificación" },
-        { cedula: "7609412", nombre: "Rojas Vazquez, Luz Diana", calificacion: 4 }
-    ];
+    <script>
+        // Datos de alumnos
+        const alumnos = [
+            { cedula: "5579579", nombre: "Avalos Vallejos, Nayely Samira", calificacion: 5 },
+            { cedula: "6015900", nombre: "Franco, Norma Esperanza", calificacion: 5 },
+            { cedula: "7594799", nombre: "Pereira Gonzalez, Nilsa Mabel", calificacion: 5 },
+            { cedula: "7236492", nombre: "Centurion Fonsecoa, Liz Mariela", calificacion: 5 },
+            { cedula: "4595471", nombre: "Flores Garcia, Gabriela", calificacion: 5 },
+            { cedula: "6899612", nombre: "Leon Almada, Avelino Alexis", calificacion: 5 },
+            { cedula: "5681745", nombre: "Martinez Barreto, Miguel", calificacion: 4 },
+            { cedula: "5138676", nombre: "Negrete, Ramona", calificacion: 5 },
+            { cedula: "6669661", nombre: "Silvero Servian, Dionicio Ismael", calificacion: 5 },
+            { cedula: "6296836", nombre: "Centurion Sosa, Arnaldo", calificacion: 4 },
+            { cedula: "5359303", nombre: "Cartamen Aguilera, Maria Belen", calificacion: 5 },
+            { cedula: "2833941", nombre: "Rojas, Arnaldo", calificacion: 5 },
+            { cedula: "5861704", nombre: "Cespedes, Melissa", calificacion: 5 },
+            { cedula: "6198523", nombre: "Benitez, Alicia", calificacion: 5 }
+        ];
 
-    function buscarNota() {
-        const cedulaBusqueda = document.getElementById("cedulaInput").value.trim();
-        const resultadoDiv = document.getElementById("resultado");
-        const tablaNotasBody = document.getElementById("tablaNotas");
-        const mensajeError = document.getElementById("mensajeError");
+        function buscarNota() {
+            const cedulaInput = document.getElementById("cedulaInput");
+            const cedulaBusqueda = cedulaInput.value.trim();
+            const resultadoDiv = document.getElementById("resultado");
+            const tablaNotasBody = document.getElementById("tablaNotas");
+            const mensajeError = document.getElementById("mensajeError");
 
-        tablaNotasBody.innerHTML = '';
-        resultadoDiv.classList.add('hidden');
-        mensajeError.classList.add('hidden');
+            // Limpiar resultados previos
+            tablaNotasBody.innerHTML = '';
+            resultadoDiv.classList.add('hidden');
+            mensajeError.classList.add('hidden');
 
-        const alumnoEncontrado = alumnos.find(alumno => alumno.cedula === cedulaBusqueda);
+            if (cedulaBusqueda === "") {
+                mensajeError.textContent = "Por favor, ingrese un número de cédula.";
+                mensajeError.classList.remove('hidden');
+                return;
+            }
 
-        if (alumnoEncontrado) {
-            const fila = document.createElement('tr');
-            fila.innerHTML = `
-                <td>${alumnoEncontrado.cedula}</td>
-                <td>${alumnoEncontrado.nombre}</td>
-                <td>${alumnoEncontrado.calificacion}</td>
-            `;
-            tablaNotasBody.appendChild(fila);
-            resultadoDiv.classList.remove('hidden');
-        } else {
-            mensajeError.classList.remove('hidden');
+            const alumnoEncontrado = alumnos.find(alumno => alumno.cedula === cedulaBusqueda);
+
+            if (alumnoEncontrado) {
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                    <td>${alumnoEncontrado.cedula}</td>
+                    <td>${alumnoEncontrado.nombre}</td>
+                    <td>${alumnoEncontrado.calificacion}</td>
+                `;
+                tablaNotasBody.appendChild(fila);
+                resultadoDiv.classList.remove('hidden');
+            } else {
+                mensajeError.textContent = "Cédula no encontrada. Por favor, verifique el número ingresado.";
+                mensajeError.classList.remove('hidden');
+            }
         }
-    }
 
-    function limpiarCampos() {
-        document.getElementById("cedulaInput").value = '';
-        document.getElementById("resultado").classList.add('hidden');
-        document.getElementById("mensajeError").classList.add('hidden');
-        document.getElementById("cedulaInput").focus();
-    }
-</script>
+        function limpiarCampos() {
+            document.getElementById("cedulaInput").value = '';
+            document.getElementById("resultado").classList.add('hidden');
+            document.getElementById("mensajeError").classList.add('hidden');
+            document.getElementById("cedulaInput").focus();
+        }
+
+        // Extra: permitir buscar al presionar Enter
+        document.getElementById("cedulaInput").addEventListener("keyup", function (event) {
+            if (event.key === "Enter") {
+                buscarNota();
+            }
+        });
+    </script>
 </body>
 </html>
